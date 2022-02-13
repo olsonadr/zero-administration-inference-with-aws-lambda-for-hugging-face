@@ -9,8 +9,39 @@ from transformers import pipeline
 nlp = pipeline("sentiment-analysis")
 
 def handler(event, context):
-    response = {
-        "statusCode": 200,
-        "body": nlp(event['text'])[0]
+    # Starting point for response formatting
+    result = {
+        "isBase64Encoded": False,
+        "statusCode": 500,
+        "headers": { "Content-Type": "application/json" },
+        "multiValueHeaders": { },
+        "body": ""
     }
-    return response
+
+    # print(event)
+    # Get input from body or query string
+    if ('text' in event):
+        text = event['text']
+    elif ('parameters' in event 
+            and 'text' in event['parameters']):
+            text = event['parameters']['text']
+    elif ('body' in event 
+            and 'text' in event['body']):
+            text = event['body']['text']
+    elif ('queryStringParameters' in event 
+            and 'text' in event['queryStringParameters']):
+        text = event['queryStringParameters']['text']
+    # If input not given, return error
+    else:
+        result['statusCode'] = 500
+        result['body'] = "Error! Valid input text not provided!"
+        result['headers']['Content-Type'] = "application/json"
+        return result
+        # return json.dumps(result)
+
+    # Otherwise calculate response and return
+    result['statusCode'] = 200
+    result['body'] = nlp(text)[0]
+    result['headers']['Content-Type'] = "application/json"
+    return result
+    # return json.dumps(result)
