@@ -1,5 +1,5 @@
-# aws-cdk-lib
-# constructs
+# aws-cdk-lib>=2.0.0
+# constructs>=10.0.0
 aws-cdk.core
 aws-cdk.aws_ecr
 aws-cdk.aws_lambda
