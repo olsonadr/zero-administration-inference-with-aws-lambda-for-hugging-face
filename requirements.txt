@@ -1,7 +1,14 @@
-# aws-cdk-lib>=2.0.0
-# constructs>=10.0.0
-aws-cdk.core
-aws-cdk.aws_ecr
-aws-cdk.aws_lambda
-aws-cdk.aws_apigateway
+aws-cdk-lib>=2.0.0
+constructs>=10.0.0
+# aws-cdk.core
+# aws-cdk.aws_ecr
+# aws-cdk.aws_lambda
+# aws-cdk.aws_apigateway
+# transformers
+# transformers[torch]
 transformers
+pandas==1.4.0
+
+# Torch nightly
+--find-links https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
+torch
