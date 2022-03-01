@@ -1,4 +1,4 @@
-ARG FUNCTION_DIR="/function/"
+ARG FUNCTION_DIR="/function"
 
 FROM huggingface/transformers-pytorch-cpu as build-image
 
@@ -22,10 +22,15 @@ RUN mkdir -p ${FUNCTION_DIR}
 # Copy handler function
 COPY *.py ${FUNCTION_DIR}
 
+# Copy the model files
+ADD model ${FUNCTION_DIR}/model
+# COPY model/* ${FUNCTION_DIR}/model/*
+
 # Install the function's dependencies
 RUN pip uninstall --yes jupyter
 RUN pip install --target ${FUNCTION_DIR} awslambdaric
 RUN pip install --target ${FUNCTION_DIR} sentencepiece protobuf
+# RUN pip install --target ${FUNCTION_DIR} transformers pandas torch --find-links https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
 
 FROM huggingface/transformers-pytorch-cpu
 
