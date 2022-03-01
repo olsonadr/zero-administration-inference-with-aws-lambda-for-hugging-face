@@ -18,30 +18,43 @@ def handler(event, context):
         "body": ""
     }
 
-    # print(event)
     # Get input from body or query string
     if ('text' in event):
-        text = event['text']
-    elif ('parameters' in event 
-            and 'text' in event['parameters']):
-            text = event['parameters']['text']
-    elif ('body' in event 
-            and 'text' in event['body']):
-            text = event['body']['text']
-    elif ('queryStringParameters' in event 
-            and 'text' in event['queryStringParameters']):
-        text = event['queryStringParameters']['text']
-    # If input not given, return error
+        event_text = event['text']
+    elif ('body' in event and 'text' in event['body']):
+        event_text = event['body']['text']
+    elif ('queryStringParameters' in event and 'text' in event['queryStringParameters']):
+        event_text = event['queryStringParameters']['text']
     else:
         result['statusCode'] = 500
         result['body'] = "Error! Valid input text not provided!"
         result['headers']['Content-Type'] = "application/json"
         return result
-        # return json.dumps(result)
 
-    # Otherwise calculate response and return
-    result['statusCode'] = 200
-    result['body'] = nlp(text)[0]
-    result['headers']['Content-Type'] = "application/json"
+    # Found event_text, use it and return result
+    try:
+        result['statusCode'] = 200
+        result['body'] = nlp(event_text)[0]
+        result['headers']['Content-Type'] = "application/json"
+    except:
+        result['statusCode'] = 500
+        result['headers']['Content-Type'] = "application/json"
     return result
-    # return json.dumps(result)
+
+    # # Python 3.10 required for this nicer match formatting
+    # # Get input from body or query string
+    # match event:
+    #     # If an expected format
+    #     case {'text': event_text} \
+    #             | {'body': {'text': event_text}} \
+    #             | {'queryStringParameters': {'text': event_text}}:
+    #         result['statusCode'] = 200
+    #         result['body'] = nlp(event_text)[0]
+    #         result['headers']['Content-Type'] = "application/json"
+    #         return result
+    #     # Else if input not given, return error
+    #     case _:
+    #         result['statusCode'] = 500
+    #         result['body'] = "Error! Valid input text not provided!"
+    #         result['headers']['Content-Type'] = "application/json"
+    #         return result
