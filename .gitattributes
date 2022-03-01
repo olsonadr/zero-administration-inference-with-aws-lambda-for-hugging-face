@@ -1,2 +1,4 @@
 *.bin filter=lfs diff=lfs merge=lfs -text
 *.pt filter=lfs diff=lfs merge=lfs -text
+incident_cls.pt filter=lfs diff=lfs merge=lfs -text
+pytorch_model.bin filter=lfs diff=lfs merge=lfs -text
