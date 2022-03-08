@@ -7,9 +7,8 @@ SPDX-License-Identifier: MIT-0
 import os
 import json
 import torch
-# from pandas import read_csv
 from transformers import LongformerTokenizer, LongformerModel
-
+from unidecode import unidecode
 
 def list_files(startpath):
     res = ""
@@ -47,7 +46,8 @@ def list_files(startpath):
 #     os.environ["TRANSFORMERS_CACHE"], os.environ["INCIDENTS_FILENAME"])
 # csv_path = os.path.join(
 #     os.environ["TRANSFORMERS_CACHE"], os.environ["CSV_FILENAME"])
-model = LongformerModel.from_pretrained('/function/model', local_files_only=True)
+model = LongformerModel.from_pretrained(
+    '/function/model', local_files_only=True)
 tokenizer = LongformerTokenizer.from_pretrained(
     '/function/model', local_files_only=True)
 csv_path = '/function/model/incidents.csv'
@@ -60,6 +60,8 @@ tensors = torch.load(incidents_path)
 
 # Test effacacy of preprocessing and meaning whole output rather than
 # stripping CLS token. (Cursory: much more effective)
+
+
 def test(text):
     inp = tokenizer(text,
                     padding="longest",
@@ -75,8 +77,10 @@ def test(text):
     ]
     return sims
 
+
 def inputted(whole_text):
-    sims = [j for j in sorted(zip(test(whole_text), range(1, len(tensors) + 1)), reverse=True)]
+    sims = [j for j in sorted(
+        zip(test(whole_text), range(1, len(tensors) + 1)), reverse=True)]
     best = sims[:best_of]
     return best
     # return sims
@@ -100,32 +104,33 @@ def handler(event, context):
     # Get input from body or query string
     if ('text' in event):
         event_text = event['text']
-    elif ('body' in event and 'text' in event['body']):
-        event_text = event['body']['text']
+    elif ('body' in event and event['body'] != '' and 'text' in json.loads(event['body'])):
+        event_text = json.loads(event['body'])['text']
     elif ('queryStringParameters' in event and 'text' in event['queryStringParameters']):
         event_text = event['queryStringParameters']['text']
     else:
         result['statusCode'] = 500
-        result['body'] = "Error! Valid input text not provided!"
+        result['body'] = {'msg': 'Error! Valid input text not provided!'}
         result['headers']['Content-Type'] = "application/json"
-        return result
+        return json.dumps(result)
+        # return result
+
+    # Handle unicode in event_text
+    event_text = unidecode(event_text)
+    # event_text = unicodedata.normalize('NFKD', event_text).encode('ascii', 'ignore')
 
     # Found event_text, use it and return result
     try:
         result['statusCode'] = 200
-        result['body'] = process(event_text)
-        # result['body'] = inputted(event_text)
-        # result['body'] = f"""
-        # isFile = {os.path.isfile('/function/model/pytorch_model.bin')};
-        # fileTree = {list_files('/function/model')};
-        # """
+        result['body'] = {'msg': process(event_text)}
         result['headers']['Content-Type'] = "application/json"
     except:
         result['statusCode'] = 500
         result['headers']['Content-Type'] = "application/json"
-    return result
+    return json.dumps(result)
+    # return result
 
-    # # Python 3.10 required for this nicer match formatting
+    # # Python 3.10 required for this nicer match formatting (not updated for proxy integration)
     # # Get input from body or query string
     # match event:
     #     # If an expected format
