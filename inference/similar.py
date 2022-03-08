@@ -131,6 +131,7 @@ def handler(event, context):
         if (best_of != best_of_def):  # if input found (type/value mismatch)
             best_of = int(best_of)
     except ValueError:
+        best_of = best_of_def
         result['body']['warnings'].append(
             f'Provided value for "num" invalid, using default of {best_of_def}.')
     if (best_of == 0):
@@ -147,7 +148,7 @@ def handler(event, context):
         result['headers']['Content-Type'] = "application/json"
     except:
         result['statusCode'] = 500
-        result['body']['warning'] = "Error occurred while processing input text!"
+        result['body']['warnings'].append("Error occurred while processing input text!")
         result['headers']['Content-Type'] = "application/json"
     return json.dumps(result)
     # return result
