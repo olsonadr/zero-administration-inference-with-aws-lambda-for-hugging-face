@@ -7,7 +7,13 @@ constructs>=10.0.0
 # transformers
 # transformers[torch]
 transformers
-pandas==1.4.0
+#pandas==1.4.0
+python-dotenv
+unidecode
+
+# Alpha AWS requirements
+aws-cdk.aws-apigatewayv2-alpha
+aws-cdk.aws-apigatewayv2-integrations-alpha
 
 # Torch nightly
 --find-links https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
