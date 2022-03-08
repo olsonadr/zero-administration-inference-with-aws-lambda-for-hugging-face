@@ -1,0 +1,128 @@
+{
+    "resource": "/{proxy+}",
+    "path": "/hello/world",
+    "httpMethod": "POST",
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "cache-control": "no-cache",
+        "CloudFront-Forwarded-Proto": "https",
+        "CloudFront-Is-Desktop-Viewer": "true",
+        "CloudFront-Is-Mobile-Viewer": "false",
+        "CloudFront-Is-SmartTV-Viewer": "false",
+        "CloudFront-Is-Tablet-Viewer": "false",
+        "CloudFront-Viewer-Country": "US",
+        "Content-Type": "application/json",
+        "headerName": "headerValue",
+        "Host": "gy415nuibc.execute-api.us-east-1.amazonaws.com",
+        "Postman-Token": "9f583ef0-ed83-4a38-aef3-eb9ce3f7a57f",
+        "User-Agent": "PostmanRuntime/2.4.5",
+        "Via": "1.1 d9842f7680bd.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "pn-PWItl0gdeJky8tqsg8iS_sgsKD1A==",
+        "X-Forwarded-For": "54.240.196.186, 54.182.214.83",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https"
+    },
+    "multiValueHeaders": {
+        "Accept": [
+            "*/*"
+        ],
+        "Accept-Encoding": [
+            "gzip, deflate"
+        ],
+        "cache-control": [
+            "no-cache"
+        ],
+        "CloudFront-Forwarded-Proto": [
+            "https"
+        ],
+        "CloudFront-Is-Desktop-Viewer": [
+            "true"
+        ],
+        "CloudFront-Is-Mobile-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-SmartTV-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-Tablet-Viewer": [
+            "false"
+        ],
+        "CloudFront-Viewer-Country": [
+            "US"
+        ],
+        "Content-Type": [
+            "application/json"
+        ],
+        "headerName": [
+            "headerValue"
+        ],
+        "Host": [
+            "gy415nuibc.execute-api.us-east-1.amazonaws.com"
+        ],
+        "Postman-Token": [
+            "9f583ef0-ed83-4a38-aef3-eb9ce3f7a57f"
+        ],
+        "User-Agent": [
+            "PostmanRuntime/2.4.5"
+        ],
+        "Via": [
+            "1.1 d9842f7680bd.cloudfront.net (CloudFront)"
+        ],
+        "X-Amz-Cf-Id": [
+            "pn-PWItl0gdeJky8tqsg8iS_sgsKD1A=="
+        ],
+        "X-Forwarded-For": [
+            "54.240.196.186, 54.182.214.83"
+        ],
+        "X-Forwarded-Port": [
+            "443"
+        ],
+        "X-Forwarded-Proto": [
+            "https"
+        ]
+    },
+    "queryStringParameters": {
+        "name": "me",
+        "multivalueName": "me"
+    },
+    "multiValueQueryStringParameters": {
+        "name": [
+            "me"
+        ],
+        "multivalueName": [
+            "you",
+            "me"
+        ]
+    },
+    "pathParameters": {
+        "proxy": "hello/world"
+    },
+    "stageVariables": {
+        "stageVariableName": "stageVariableValue"
+    },
+    "requestContext": {
+        "accountId": "12345678912",
+        "resourceId": "roq9wj",
+        "stage": "testStage",
+        "requestId": "deef4878-7910-11e6-8f14-25afc3e9ae33",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": null,
+            "cognitoIdentityId": null,
+            "caller": null,
+            "apiKey": null,
+            "sourceIp": "192.168.196.186",
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": null,
+            "userAgent": "PostmanRuntime/2.4.5",
+            "user": null
+        },
+        "resourcePath": "/{proxy+}",
+        "httpMethod": "POST",
+        "apiId": "gy415nuibc"
+    },
+    "body": "{\"text\": \"YouTube Kids is a colorful, stripped-down version of YouTube, full of animations, bright colors, and cartoon avatars meant to keep the youngest internet users engaged. When scrolling through the app, kids can see everything from Nickelodeon song mashups to prank series to baking videos — a cheerful-seeming microcosm of actual YouTube. But child safety advocates and some members of Congress say there’s a problem with the app and corresponding website: an autoplay feature that keeps one video coming after another with no pause or interruption. When one video ends, another video selected by YouTube Kids’ recommendations algorithm automatically plays. Right now, autoplay is on by default, and there is no way to turn off autoplay, so YouTube Kids will continue to feed children algorithmically curated videos that run indefinitely unless someone happens to show up and intervene. “If you’re a 6- or 7-year-old child, you’re basically watching what’s being recommended to you,” Rep. Lori Trahan (D-MA), a member of Congress whose kids use the app, told Recode. “If you combine that with the endless loop of autoplay, then if you’re not sitting next to your child while they’re watching YouTube, that can get away from you pretty quickly.” Trahan says she’s worried the default autoplay setting is a manipulative design tactic meant to keep children online for as long as possible, a concern she raised with Google CEO Sundar Pichai during a March hearing about misinformation. She’s not alone. A recent letter to YouTube CEO Susan Wojcicki from the House Oversight Committee’s subcommittee on consumer and economic policy, which has launched an investigation into the platform, says the app is harmful because it “places the onus on the child to stop their viewing activity, rather than providing a natural break or endpoint.” After Recode asked about the inability to turn off autoplay in the Kids app, YouTube said, “In the coming months, users will also be able to control the autoplay feature in YouTube Kids.” The company did not say why it made that decision or why it would take so long to change the feature. But legislators are trying to go even further. A law proposed last year called the Kids Internet Design and Safety (KIDS) Act would ban the use of autoplay in kid-targeted apps entirely, and experts at a recent Federal Trade Commission panel on dark patterns targeting children highlighted autoplay in children’s video apps as a concern, with some pointing specifically to YouTube. (Dark patterns, as Recode’s Sara Morrison has explained, are web design features that trick or pressure people into making certain choices online.) “Platforms like YouTube Kids need child-centric design by default, so while the addition of the autoplay control is a step in the right direction, it falls woefully short of what parents and their children should be able to expect,” Rep. Trahan told Recode in response to YouTube’s change. Meanwhile, the House subcommittee is continuing its investigation into the YouTube Kids app and has requested documents related to “behavioral analytics” and pilots YouTube has run for features like autoplay. A senior Democratic aide confirmed to Recode that investigators had heard from parents and child safety groups about the feature being problematic. YouTube said it has provided an initial response to the subcommittee and will provide more information in the coming weeks. But amid a pandemic that’s left parents working and kids learning from home, critics warn that small design choices make things harder for parents trying to set reasonable limits on what young children see online. Some say features like forced autoplay manipulatively glue children to their platforms with low-quality content. So even if YouTube does add the option, some are worried that leaving it on by default — or allowing it at all — could still do harm. YouTube Kids is largely modeled off the regular version of YouTube. The homepage of the app is a simplified version of the YouTube homepage, suggesting different videos in categories like “Reading” and “Shows.” Launched in 2015, YouTube Kids is designed to show only content targeted toward kids. That includes cartoons and home videos, as well as videos from production outfits like Disney and Vox that get pulled onto the YouTube Kids platform from YouTube proper. YouTube says there are now more than 35 million weekly viewers on YouTube Kids in more than 80 countries. YouTube Kids is not a stranger to controversy. In the past, the app has been criticized for allowing violent and sexualized content, and the company even warns parents that its systems may not exclude all inappropriate content. A 2017 report from the New York Times found that children were encountering violent videos including popular children’s cartoon characters. In 2019, the Federal Trade Commission found that YouTube had advertised its popularity among children to toy makers like Mattel and Hasbro and inappropriately collected information about children, allegedly violating the Children’s Online Privacy Protection Rule (COPPA), which limits the data that platforms can collect from children they know to be under 13. The agency forced YouTube to make major changes to kids-focused content on its main site. Unlike the regular YouTube platform, YouTube Kids now requires parents’ consent to collect children’s data (though regular YouTube does not). YouTube was also fined a record $170 million. But some parents who have used the YouTube Kids platform, including parents in Congress, say the kids’ version still has manipulative features, like autoplay, that make it harder for families to protect their children. “It feels like this is engineered to keep kids watching an endless stream of videos one after another and have them never be over,” Amanda Kloer, a campaign director with the child safety group ParentsTogether who uses the app with her kids, told Recode. “When you combine that with the algorithm-driven recommendations, which show content that parents have not viewed and have not approved, you can very easily get into situations where kids are watching content that was meant for older kids, that an individual parent or family finds objectionable.” It’s worth noting that autoplay is also a feature on YouTube, but it can be turned off with a simple toggle. It’s not clear why YouTube Kids was designed to prevent autoplay from being turned off or why YouTube has taken so long to address complaints about the feature, which parents have made for quite some time. A petition to YouTube’s CEO Susan Wojcicki from the group ParentsTogether and digital rights group Fight for the Future urges the company to turn off autoplay by default for both YouTube and YouTube Kids, and a broader set of groups belonging to a campaign called “Stop Spying On Kids” names YouTube autoplay as an example of an “addictive and manipulative” feature that parents can’t control. Right now, YouTube Kids does offer some controls. There is a timer feature that allows parents to set a watch limit of up to an hour. But it’s not the default setting, and parents have to reset the timer every single viewing session. Another feature allows users to preselect certain videos or certain channels, so content only from those appear, and parents can bar their kids from using the search function. None of these features are the same as having the ability to turn off autoplay on the Kids app, critics say. In fact, posts on online forums like StackExchange and Quora show at least some parents have looked for ways to turn off autoplay on YouTube Kids, seemingly to no avail. Josh Golin, the executive director of the child-safety-focused group Campaign for a Commercial-Free Childhood, says his organization had previously raised the question of YouTube Kids’ autoplay feature directly to YouTube. “Kids should be going to YouTube to watch specific programs, not going to YouTube to watch what YouTube recommends to them until a parent comes in and yanks them off,” Golin told Recode. The objections to autoplay aren’t just that kids are encouraged to keep watching. It’s that the autoplay feature acts as a gateway to algorithmically selected content that parents have little control over or insight into. The YouTube Kids algorithm might end up producing an endless supply of episodes featuring a child’s favorite cartoon, or video after video of a celebrity reading stories. But that algorithm can also serve up low-quality and even harmful content that parents don’t necessarily expect on an app for kids. Kloer, of ParentsTogether, says that inappropriate content that has popped up on YouTube Kids includes videos that encourage dieting and calorie limitations as well as violent cartoons. Kloer says she flagged some content that promoted disordered eating, which YouTube took down, but says she’s seen other similar videos on the app, which is why the autoplay and algorithmic recommendations become so worrisome. In an hour she spent on a preschool-age child’s YouTube Kids profile last month, Kloer was able to find videos encouraging kids how to make their shirts sexier, a video in which a little boy pranks a girl over her weight, and a video in which an animated dog pulls objects out of an unconscious animated hippo’s butt. Others have shared similar stories. Courtney, a mom whose last name is being withheld to protect her child’s privacy, told Recode that in 2019, YouTube Kids autoplay led her 6-year-old daughter to an animated video that encouraged suicide. “First I thought it was a great app,” Courtney said. “That’s how it was for a while until we found that horrible video.” Sometimes, the system can just lead to content that’s low quality. Benjamin Burroughs, a professor of media at the University of Nevada Las Vegas, says his 2-year-old son is well versed in using the microphone-based voice search in YouTube Kids. His child says words like “ball” and “trick” to find trick-shot videos and videos from Dude Perfect, a sports channel that he likes. “That just leads down a path of this kind of branded content through these and family vlogs that get auto-generated for kids,” Burroughs says of the autoplay feature, noting that children can end up being exposed to what appears to be branded content that isn’t clearly labeled as advertising. That YouTube Kids has a content moderation problem is not news. But experts told Recode that without a way to permanently turn off autoplay, users of YouTube Kids have even less control over the content their children see. “Protecting kids and families is a top priority for us. We work hard to ensure the videos in YouTube Kids are age-appropriate, and quickly remove videos violating our policies when flagged by users,” a YouTube spokesperson told Recode. YouTube removed five of several videos flagged by Recode from the Kids app. Meanwhile, YouTube is working on porting even more regular YouTube content into YouTube Kids. In February, the company said it will add a feature to allow parent account holders to move videos and channels from regular YouTube into the YouTube Kids app, adding to the amount of content currently present. Later that month, the company also said it’s testing a supervised Google account feature that would allow parents to gradually expose their children to more of regular YouTube. Some welcome the change from YouTube. “YouTube Kids’ forced autoplay function increased children’s time on the app and led to their exposure to more vacuous content. I am pleased that YouTube responded to one of the chief concerns I raised in my investigation, and is changing this feature as a result,” Rep. Raja Krishnamoorthi told Recode. “Giving parents more control will lead to better outcomes for our kids.” Exactly how YouTube Kids will update the autoplay feature remains to be seen. Golin, of the Campaign for a Commercial-Free Childhood, warns if autoplay remains an option, that the safest options need to be YouTube Kids’ default setting. Adding a beneficial option that isn’t the default setting can end up just adding another step that parents may not choose to do, “especially in these crazy times.” At the same time, some think autoplay shouldn’t be available in kids’ apps at all. “A lot of the consumer interest groups have compiled a lot of this research [and] tied it back to Google, Facebook, YouTube, others, kind of skirting along, taking advantage of the manipulative tactics, online tactics to keep kids engaged,” Rep. Kathy Castor (D-FL), whose legislation would ban the feature in kids-oriented platforms entirely, told Recode. “The autoplay is one of the most egregious.” For now, YouTube has not said whether YouTube Kids will have autoplay on or off by default. It’s also unclear how easy it will be to turn off autoplay. Still, the autoplay in YouTube Kids is a reminder that design choices made by tech platforms do have an impact on how parents and children interact with technology, and where regulators might step in.\"}",
+    "isBase64Encoded": false
+}
