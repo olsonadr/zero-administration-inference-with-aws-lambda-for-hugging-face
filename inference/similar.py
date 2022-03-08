@@ -116,8 +116,7 @@ def handler(event, context):
         # return result
 
     # Handle unicode in event_text
-    event_text = unidecode(event_text)
-    # event_text = unicodedata.normalize('NFKD', event_text).encode('ascii', 'ignore')
+    event_text = unidecode(event_text[:6000])
 
     # Found event_text, use it and return result
     try:

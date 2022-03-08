@@ -30,6 +30,7 @@ ADD model ${FUNCTION_DIR}/model
 RUN pip uninstall --yes jupyter
 RUN pip install --target ${FUNCTION_DIR} awslambdaric
 RUN pip install --target ${FUNCTION_DIR} sentencepiece protobuf
+RUN pip install --target ${FUNCTION_DIR} unidecode
 # RUN pip install --target ${FUNCTION_DIR} transformers pandas torch --find-links https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
 
 FROM huggingface/transformers-pytorch-cpu
