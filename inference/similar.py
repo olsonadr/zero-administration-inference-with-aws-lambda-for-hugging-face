@@ -90,7 +90,7 @@ def inputted(whole_text, best_of=best_of_def):
 # What to do to correctly formatted input event_text
 def process(event_text, best_of=best_of_def):
     # return tokenizer(event_text)
-    return str(inputted(event_text, best_of))
+    return inputted(event_text, best_of)
 
 # Define lambda handler
 def handler(event, context):
@@ -143,9 +143,14 @@ def handler(event, context):
 
     # Found event_text, use it and return result
     try:
+        res = process(event_text, best_of)
         result['statusCode'] = 200
-        result['body']['msg'] = process(event_text, best_of)
+        result['body']['msg'] = str(res)
         result['headers']['Content-Type'] = "application/json"
+        if (res != None and len(res) > 0):
+            best_score, best_idx = res[0]
+            best_url = f'https://incidentdatabase.ai/apps/discover?display=details&incident_id={best_idx}'
+            result['body']['best_url'] = best_url
     except:
         result['statusCode'] = 500
         result['body']['warnings'].append("Error occurred while processing input text!")
