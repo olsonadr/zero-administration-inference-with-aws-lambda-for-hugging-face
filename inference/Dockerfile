@@ -17,10 +17,10 @@ RUN apt-get update && \
 
 
 # Create function directory
-RUN mkdir -p ${FUNCTION_DIR}
+RUN mkdir -p ${FUNCTION_DIR}/
 
 # Copy handler function
-COPY *.py ${FUNCTION_DIR}
+COPY *.py ${FUNCTION_DIR}/
 
 # Copy the model files
 ADD model ${FUNCTION_DIR}/model
@@ -40,7 +40,7 @@ ARG FUNCTION_DIR
 WORKDIR ${FUNCTION_DIR}
 
 # Copy in the built dependencies
-COPY --from=build-image ${FUNCTION_DIR} ${FUNCTION_DIR}
+COPY --from=build-image ${FUNCTION_DIR}/ ${FUNCTION_DIR}/
 
 ENTRYPOINT [ "python3", "-m", "awslambdaric" ]
 
