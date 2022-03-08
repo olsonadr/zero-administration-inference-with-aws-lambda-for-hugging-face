@@ -52,7 +52,7 @@ tokenizer = LongformerTokenizer.from_pretrained(
     '/function/model', local_files_only=True)
 csv_path = '/function/model/incidents.csv'
 incidents_path = '/function/model/incident_cls.pt'
-best_of = 3
+best_of_def = 3
 
 # Load in a list of articles from a CSV
 tensors = torch.load(incidents_path)
@@ -78,17 +78,19 @@ def test(text):
     return sims
 
 
-def inputted(whole_text):
+def inputted(whole_text, best_of=best_of_def):
     sims = [j for j in sorted(
         zip(test(whole_text), range(1, len(tensors) + 1)), reverse=True)]
-    best = sims[:best_of]
-    return best
-    # return sims
+
+    if (best_of >= 0):
+        return sims[:best_of]
+    else:
+        return sims
 
 # What to do to correctly formatted input event_text
-def process(event_text):
+def process(event_text, best_of=best_of_def):
     # return tokenizer(event_text)
-    return str(inputted(event_text))
+    return str(inputted(event_text, best_of))
 
 # Define lambda handler
 def handler(event, context):
@@ -98,7 +100,7 @@ def handler(event, context):
         "statusCode": 500,
         "headers": {"Content-Type": "application/json"},
         "multiValueHeaders": {},
-        "body": ""
+        "body": {"warnings": []}
     }
 
     # Get input from body or query string
@@ -115,21 +117,42 @@ def handler(event, context):
         return json.dumps(result)
         # return result
 
+    # Get "best of" value from body or query string (or <0 for full list)
+    best_of = best_of_def
+    if ('num' in event):
+        best_of = event['num']
+    elif ('body' in event and event['body'] != '' and 'num' in json.loads(event['body'])):
+        best_of = json.loads(event['body'])['num']
+    elif ('queryStringParameters' in event and 'num' in event['queryStringParameters']):
+        best_of = event['queryStringParameters']['num']
+    
+    # Assign to best of if possible
+    try:
+        if (best_of != best_of_def):  # if input found (type/value mismatch)
+            best_of = int(best_of)
+    except ValueError:
+        result['body']['warnings'].append(
+            f'Provided value for "num" invalid, using default of {best_of_def}.')
+    if (best_of == 0):
+        result['body']['warnings'].append(
+            f'Zero results requested with the "num" value of 0. Use value <0 for maximum possible.')
+
     # Handle unicode in event_text
     event_text = unidecode(event_text[:6000])
 
     # Found event_text, use it and return result
     try:
         result['statusCode'] = 200
-        result['body'] = {'msg': process(event_text)}
+        result['body']['msg'] = process(event_text, best_of)
         result['headers']['Content-Type'] = "application/json"
     except:
         result['statusCode'] = 500
+        result['body']['warning'] = "Error occurred while processing input text!"
         result['headers']['Content-Type'] = "application/json"
     return json.dumps(result)
     # return result
 
-    # # Python 3.10 required for this nicer match formatting (not updated for proxy integration)
+    # # Python 3.10 required for this nicer match formatting (not updated w/ proxy integration)
     # # Get input from body or query string
     # match event:
     #     # If an expected format
