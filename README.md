@@ -20,8 +20,8 @@ includes [Amazon Elastic File System](https://aws.amazon.com/efs/) (EFS)
 storage that is attached to the Lambda functions to cache the
 pre-trained models and reduce inference latency.
 
-![Architecture diagram](serverless-hugging-face.png)
-In this architectural diagram:
+![Architecture diagram](serverless-hugging-face-aws-architecture.png)
+In this architectural diagram (**update descriptions**):
 1.  Serverless inference is achieved by using Lambda functions that are
     based on container image
 2.  The container image is stored in an [Amazon Elastic Container
