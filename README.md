@@ -237,7 +237,7 @@ This is different than the request and response format specified for API Gateway
 - Request example with example values (default ```num``` of 3 most similar incidents for text "wow this is the body of a news article"):
     ```json
     {
-      "text": "wow this is the body of a news article
+      "text": "wow this is the body of a news article"
     }
     ```
 
