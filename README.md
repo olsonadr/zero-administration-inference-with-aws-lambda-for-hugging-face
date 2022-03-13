@@ -241,7 +241,7 @@ This is different than the request and response format specified for API Gateway
     }
     ```
 
-## CDK Script
+## CDK script
 The CDK script is named ```app.py``` in the solution's repository. This script describes the AWS stack for the Lambda solution using the CDK V2 python library, to enable the CDK CLI application to facillitate deployment to AWS servers. The important segments of this script are described below:
 
 The beginning of the script (global scope) imports the necessary libraries, allows the use of ```.env``` environment variables, and establishes the AWS account and region to be used for the stack:
